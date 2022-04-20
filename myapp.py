@@ -3,10 +3,10 @@ import numpy as np
 import streamlit as st
 import seaborn as sns
 
+st.title('This is my first web app')
+
 chart_data = pd.DataFrame(np.random.randn(20, 3), columns=['a', 'b', 'c'])
 print(chart_data)
-
-st.title('This is my first web app')
 
 st.table(chart_data.iloc[0:])
 
