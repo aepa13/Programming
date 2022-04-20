@@ -1,8 +1,11 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+from PIL import Image
 
 st.title('This is my first web app')
+image = Image.open('/Users/andrew/Desktop/Universidad/Programming/Logo-KDT-JU.webp')
+st.image(image)
 
 chart_data = pd.DataFrame(np.random.randn(20, 3), columns=['a', 'b', 'c'])
 
