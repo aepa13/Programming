@@ -11,6 +11,4 @@ print(chart_data)
 st.table(chart_data.iloc[0:])
 
 option = st.selectbox('Select a column', chart_data.columns.tolist())
-sns.barplot(option)
-
-@st.cache
+print(sns.barplot(option))
