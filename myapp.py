@@ -8,8 +8,6 @@ print(chart_data)
 
 st.title('This is my first web app')
 
-@st.cache
-
 st.table(chart_data.iloc[0:])
 
 option = st.selectbox('Select a column', chart_data.columns.tolist())
