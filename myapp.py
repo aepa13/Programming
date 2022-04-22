@@ -10,7 +10,7 @@ st.image(image)
 
 con = sqlite3.connect('excel_database.db') # Connect
 
-selects = {'country': 'SELECT Acronym FROM countries',
+selects = {'country': 'SELECT * FROM countries',
     
     'participants':
     '''SELECT p.shortName, p.name, p.activityType, p.organizationURL, COUNT(*) as projects, SUM(p.ecContribution) as total_grants
@@ -20,7 +20,7 @@ selects = {'country': 'SELECT Acronym FROM countries',
 
 countries = pd.read_sql(selects['country'], con)
 
-st.selectbox('', list(countries))
+st.selectbox('', list(countries['Country']))
 
 df = pd.read_sql(selects['participants'], con)
 st.dataframe(df)
