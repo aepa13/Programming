@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 from PIL import Image
+import sqlite3
 
 st.title('Final Project')
 image = Image.open('Logo-KDT-JU.webp')
