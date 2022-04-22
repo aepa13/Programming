@@ -7,13 +7,7 @@ st.title('Final Project')
 image = Image.open('Logo-KDT-JU.webp')
 st.image(image)
 
-participants = pd.read_excel('participants.xlsx')
-projects = pd.read_excel('projects.xlsx')
-countries = pd.read_excel('countries.xlsx')
-
-pd.options.display.float_format = '{:.2f}'.format
-
-con = sqlite3.connect('ecsel_database.db') # Connect
+con = sqlite3.connect('excel_database.db') # Connect
 
 participants.to_sql('participants', con , if_exists='replace', index=True)
 projects.to_sql('projects', con , if_exists='replace', index=True)
