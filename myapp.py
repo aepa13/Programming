@@ -21,4 +21,7 @@ selects = {'participants':
         WHERE p.projectID = pr.projectID AND c.Acronym = p.country AND c.Country = '{}'
         GROUP BY p.name ORDER BY SUM(p.ecContribution) DESC'''}
 
-df = pd.read_sql(selects['participants'].format(st.selectbox(countries['Country']), con)
+st.selectbox(countries['Country'])
+
+df = pd.read_sql(selects['participants'], con)
+st.dataframe(df)
