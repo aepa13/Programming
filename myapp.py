@@ -24,3 +24,5 @@ selection = st.selectbox('', list(countries['Country']))
 
 df = pd.read_sql(selects['participants'].format(selection), con)
 st.dataframe(df)
+
+st.bar_chart(df)
