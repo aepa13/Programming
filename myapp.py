@@ -30,4 +30,4 @@ selects = {
 }
 
 df = pd.read_sql(selects['participants'].format(st.selectbox(countries['Country']), con)
-st.dataframe(df)
+st.table(df.iloc[0:])
