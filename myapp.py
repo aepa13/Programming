@@ -10,13 +10,15 @@ st.image(image)
 
 con = sqlite3.connect('excel_database.db') # Connect
 
-selects = {'participants':
+selects = {'country': 'SELECT Acronym FROM countries',
+    
+    'participants':
     '''SELECT p.shortName, p.name, p.activityType, p.organizationURL, COUNT(*) as projects, SUM(p.ecContribution) as total_grants
         FROM  participants p, projects pr, countries c
         WHERE p.projectID = pr.projectID AND c.Acronym = p.country AND c.Country = '{}'
         GROUP BY p.name ORDER BY SUM(p.ecContribution) DESC'''}
 
-st.selectbox(countries['Country'])
+st.selectbox(selects['country'])
 
 df = pd.read_sql(selects['participants'], con)
 st.dataframe(df)
