@@ -30,4 +30,3 @@ selects = {
 }
 
 df = pd.read_sql(selects['participants'].format(st.selectbox(countries['Country']), con)
-
