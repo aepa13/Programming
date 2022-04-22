@@ -21,12 +21,10 @@ countries.to_sql('countries', con , if_exists='replace', index=True)
 
 database = 'ecsel_database.db'
 
-selects = {
-    'participants':
+selects = {'participants':
     '''SELECT p.shortName, p.name, p.activityType, p.organizationURL, COUNT(*) as projects, SUM(p.ecContribution) as total_grants
         FROM  participants p, projects pr, countries c
         WHERE p.projectID = pr.projectID AND c.Acronym = p.country AND c.Country = '{}'
-        GROUP BY p.name ORDER BY SUM(p.ecContribution) DESC'''    
-}
+        GROUP BY p.name ORDER BY SUM(p.ecContribution) DESC'''}
 
 df = pd.read_sql(selects['participants'].format(st.selectbox(countries['Country']), con)
