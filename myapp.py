@@ -3,13 +3,31 @@ import numpy as np
 import streamlit as st
 from PIL import Image
 
-st.title('This is my first web app')
+st.title('Final Project')
 image = Image.open('Logo-KDT-JU.webp')
 st.image(image)
 
-chart_data = pd.DataFrame(np.random.randn(20, 3), columns=['a', 'b', 'c'])
+participants = pd.read_excel('participants.xlsx')
+projects = pd.read_excel('projects.xlsx')
+countries = pd.read_excel('countries.xlsx')
 
-st.table(chart_data.iloc[0:])
+pd.options.display.float_format = '{:.2f}'.format
 
-option = st.selectbox('Select a column', chart_data.columns.tolist())
-st.bar_chart(chart_data)
+con = sqlite3.connect('ecsel_database.db') # Connect
+
+participants.to_sql('participants', con , if_exists='replace', index=True)
+projects.to_sql('projects', con , if_exists='replace', index=True)
+countries.to_sql('countries', con , if_exists='replace', index=True)
+
+database = 'ecsel_database.db'
+
+selects = {
+    'participants':
+    '''SELECT p.shortName, p.name, p.activityType, p.organizationURL, COUNT(*) as projects, SUM(p.ecContribution) as total_grants
+        FROM  participants p, projects pr, countries c
+        WHERE p.projectID = pr.projectID AND c.Acronym = p.country AND c.Country = '{}'
+        GROUP BY p.name ORDER BY SUM(p.ecContribution) DESC'''    
+}
+
+df = pd.read_sql(selects['participants'].format(st.selectbox(countries['Country'].[0:]), con)
+st.dataframe(df)
