@@ -29,5 +29,5 @@ selects = {
         GROUP BY p.name ORDER BY SUM(p.ecContribution) DESC'''    
 }
 
-df = pd.read_sql(selects['participants'].format(st.selectbox(countries['Country'].[0:]), con)
+df = pd.read_sql(selects['participants'].format(st.selectbox(countries['Country']), con)
 st.dataframe(df)
