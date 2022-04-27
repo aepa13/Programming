@@ -26,8 +26,10 @@ selects = {'country': 'SELECT * FROM countries',
 }
 
 countries = pd.read_sql(selects['country'], con)
-grants = pd.read_sql(selects['grants'], con)
+#grants = pd.read_sql(selects['grants'], con)
 selection = st.selectbox('', list(countries['Country']))
 
 df = pd.read_sql(selects['participants'].format(selection), con)
 st.dataframe(df)
+
+st.bar_chart(participants)
