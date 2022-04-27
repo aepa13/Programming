@@ -19,7 +19,7 @@ selects = {'country': 'SELECT * FROM countries',
             GROUP BY p.name ORDER BY SUM(p.ecContribution) DESC''',
     
 'grants':
-           '''SELECT SUM(p.ecContribution) as total_grants
+           '''SELECT c.Country, SUM(p.ecContribution) as total_grants
             FROM  participants p, projects pr, countries c
             WHERE p.projectID = pr.projectID AND c.Acronym = p.country AND c.Country = '{}'
             GROUP BY pr.year ORDER BY SUM(p.ecContribution) DESC'''
