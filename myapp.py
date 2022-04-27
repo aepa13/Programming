@@ -3,6 +3,7 @@ import numpy as np
 import streamlit as st
 from PIL import Image
 import sqlite3
+import matplotlib.pyplot as plt
 
 st.title('Final Project')
 image = Image.open('Logo-KDT-JU.webp')
@@ -32,4 +33,6 @@ grants = pd.read_sql(selects['grants'].format(selection), con)
 st.bar_chart(grants)
 print('')
 chart = pd.read_sql(selects['participants'].format(selection), con)
-st.dataframe(chart)
+plt.bar(chart)
+
+st.plt.show()
