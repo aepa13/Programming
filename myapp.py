@@ -31,6 +31,4 @@ selection = st.selectbox('', list(countries['Country']))
 df = pd.read_sql(selects['participants'].format(selection), con)
 st.dataframe(df)
 grants = pd.read_sql(selects['grants'].format(selection), con)
-st.dataframe(grants)
-
-st.bar_chart(grants)
+st.bar_chart(grants, x=grants['year'],y=grants['total_grants])
