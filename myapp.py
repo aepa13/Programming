@@ -22,7 +22,7 @@ selects = {'country': 'SELECT * FROM countries',
            '''SELECT COUNT(*) as projects, SUM(p.ecContribution) as total_grants
             FROM  participants p, projects pr, countries c
             WHERE p.projectID = pr.projectID AND c.Acronym = p.country AND c.Country = '{}'
-            GROUP BY p.name ORDER BY SUM(p.ecContribution) DESC'''
+            GROUP BY pr.year ORDER BY SUM(p.ecContribution) DESC'''
 }
 
 countries = pd.read_sql(selects['country'], con)
