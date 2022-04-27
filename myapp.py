@@ -26,8 +26,9 @@ selects = {'country': 'SELECT * FROM countries',
 }
 
 countries = pd.read_sql(selects['country'], con)
-grants = pd.read_sql(selects['grants'], con)
 selection = st.selectbox('', list(countries['Country']))
+
+grants = pd.read_sql(selects['grants'], con)
 
 df = pd.read_sql(selects['participants'].format(selection), con)
 st.dataframe(df)
