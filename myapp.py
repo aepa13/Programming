@@ -34,19 +34,11 @@ selection = st.selectbox('', list(countries['Country']))
 
 grants = pd.read_sql(selects['grants'].format(selection), con)
 st.bar_chart(grants)
-print('')
+
 chart = pd.read_sql(selects['participants'].format(selection), con)
 st.dataframe(chart)
 
 coordinators = pd.read_sql(selects['coordinators'].format(selection), con)
 st.dataframe(coordinators)
 
-coordinators.to_csv()
-
-st.download_button(
-     label="Download data as CSV",
-     data=csv,
-     file_name='coordinators.csv',
-     mime='text/csv',
- )
 
