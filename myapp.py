@@ -21,7 +21,7 @@ selects = {'country': 'SELECT * FROM countries',
            '''SELECT pr.year, SUM(p.ecContribution) as total_grants
             FROM  participants p, projects pr, countries c
             WHERE p.projectID = pr.projectID AND c.Acronym = p.country AND c.Country = '{}'
-            GROUP BY pr.year'''
+            GROUP BY pr.year''',
            
 'coordinators':
            '''SELECT p.shortName, p.name, p.activityType, pr.acronym, pr.objective
