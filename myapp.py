@@ -37,6 +37,8 @@ st.bar_chart(grants)
 print('')
 chart = pd.read_sql(selects['participants'].format(selection), con)
 st.dataframe(chart)
+st.download_button('Download CSV', chart)
 coordinators = pd.read_sql(selects['coordinators'].format(selection), con)
 st.dataframe(coordinators)
+st.download_button('Download CSV', coordinators)
 
