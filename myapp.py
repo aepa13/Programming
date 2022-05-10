@@ -26,7 +26,7 @@ selects = {'country': 'SELECT * FROM countries',
 'coordinators':
            '''SELECT p.shortName, p.name, p.activityType, pr.acronym, pr.objective
             FROM participants p, projects pr, countries c
-            WHERE c.Acronym = p.country AND pr.projectID = p.projectID AND p.role = ‘coordinator’ AND c.Country = '{}' '''
+            WHERE c.Acronym = p.country AND pr.projectID = p.projectID AND p.role = 'coordinator' AND c.Country = '{}' '''
 }
 
 countries = pd.read_sql(selects['country'], con)
