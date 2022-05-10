@@ -3,7 +3,7 @@ import streamlit as st
 from PIL import Image
 import sqlite3
 
-st.title('Final Project')
+st.title('Partner Search App')
 image = Image.open('Logo-KDT-JU.webp')
 st.image(image)
 
@@ -34,12 +34,15 @@ selection = st.selectbox('', list(countries['Country']))
 
 grants = pd.read_sql(selects['grants'].format(selection), con)
 bar = grants.set_index('year')
+st.title('Grants per year')
 st.bar_chart(bar)
 
 chart = pd.read_sql(selects['participants'].format(selection), con)
+st.title('Contributions')
 st.dataframe(chart)
 
 coordinators = pd.read_sql(selects['coordinators'].format(selection), con)
+st.title('Coordinators')
 st.dataframe(coordinators)
 
 
