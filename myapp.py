@@ -41,5 +41,12 @@ st.dataframe(chart)
 coordinators = pd.read_sql(selects['coordinators'].format(selection), con)
 st.dataframe(coordinators)
 
-st.download_button('Download CSV')
+coordinators.to_csv()
+
+st.download_button(
+     label="Download data as CSV",
+     data=csv,
+     file_name='coordinators.csv',
+     mime='text/csv',
+ )
 
