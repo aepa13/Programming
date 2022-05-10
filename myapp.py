@@ -33,6 +33,7 @@ countries = pd.read_sql(selects['country'], con)
 selection = st.selectbox('', list(countries['Country']))
 
 grants = pd.read_sql(selects['grants'].format(selection), con)
+grants.set_index('year')
 st.bar_chart(grants)
 
 chart = pd.read_sql(selects['participants'].format(selection), con)
