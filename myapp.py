@@ -22,6 +22,11 @@ selects = {'country': 'SELECT * FROM countries',
             FROM  participants p, projects pr, countries c
             WHERE p.projectID = pr.projectID AND c.Acronym = p.country AND c.Country = '{}'
             GROUP BY pr.year'''
+           
+'coordinators':
+           '''SELECT p.shortName, p.name, p.activityType, pr.acronym, pr.objective
+            FROM participants p, projects pr, countries c
+            WHERE c.Acronym = p.country AND pr.projectID = p.projectID AND role = ‘coordinator’ AND c.Country = '{}''''
 }
 
 countries = pd.read_sql(selects['country'], con)
@@ -32,4 +37,6 @@ st.bar_chart(grants)
 print('')
 chart = pd.read_sql(selects['participants'].format(selection), con)
 st.dataframe(chart)
+coordinators = pd.read_sql(selects['coordinators'].format(selection), con)
+st.dataframe(coordinators)
 
