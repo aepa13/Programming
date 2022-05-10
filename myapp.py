@@ -41,6 +41,13 @@ chart = pd.read_sql(selects['participants'].format(selection), con)
 st.title('Contributions')
 st.dataframe(chart)
 
+st.download_button(
+     label="Download data as CSV",
+     data = chart.to_csv(),
+     file_name='contributions.csv',
+     mime='text/csv',
+ )
+
 coordinators = pd.read_sql(selects['coordinators'].format(selection), con)
 st.title('Coordinators')
 st.dataframe(coordinators)
