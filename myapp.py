@@ -52,4 +52,11 @@ coordinators = pd.read_sql(selects['coordinators'].format(selection), con)
 st.title('Coordinators')
 st.dataframe(coordinators)
 
+st.download_button(
+     label="Download data as CSV",
+     data = coordinators.to_csv(),
+     file_name='coordinators.csv',
+     mime='text/csv',
+ )
+
 
